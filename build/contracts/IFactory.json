@@ -2,23 +2,42 @@
   "contractName": "IFactory",
   "abi": [
     {
-      "constant": true,
-      "inputs": [],
-      "name": "gasEpoch",
-      "outputs": [
+      "anonymous": false,
+      "inputs": [
         {
-          "name": "",
-          "type": "uint256"
+          "indexed": true,
+          "internalType": "address",
+          "name": "liability",
+          "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "name": "NewLiability",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "lighthouse",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "NewLighthouse",
+      "type": "event"
     },
     {
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
           "name": "",
           "type": "address"
         }
@@ -26,27 +45,9 @@
       "name": "gasConsumedOf",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "isLighthouse",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
         }
       ],
       "payable": false,
@@ -56,28 +57,10 @@
     {
       "constant": true,
       "inputs": [],
-      "name": "totalGasConsumed",
+      "name": "gasEpoch",
       "outputs": [
         {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "nonceOf",
-      "outputs": [
-        {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -92,6 +75,7 @@
       "name": "gasPrice",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -101,38 +85,67 @@
       "type": "function"
     },
     {
-      "anonymous": false,
+      "constant": true,
       "inputs": [
         {
-          "indexed": true,
-          "name": "liability",
+          "internalType": "address",
+          "name": "",
           "type": "address"
         }
       ],
-      "name": "NewLiability",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
+      "name": "isLighthouse",
+      "outputs": [
         {
-          "indexed": true,
-          "name": "lighthouse",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "name",
-          "type": "string"
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
-      "name": "NewLighthouse",
-      "type": "event"
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "constant": true,
       "inputs": [
         {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "nonceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalGasConsumed",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
           "name": "_gas",
           "type": "uint256"
         }
@@ -140,6 +153,7 @@
       "name": "wnFromGas",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -152,14 +166,17 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "uint256",
           "name": "_minimalStake",
           "type": "uint256"
         },
         {
+          "internalType": "uint256",
           "name": "_timeoutInBlocks",
           "type": "uint256"
         },
         {
+          "internalType": "string",
           "name": "_name",
           "type": "string"
         }
@@ -167,6 +184,7 @@
       "name": "createLighthouse",
       "outputs": [
         {
+          "internalType": "contract ILighthouse",
           "name": "",
           "type": "address"
         }
@@ -179,10 +197,12 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "bytes",
           "name": "_demand",
           "type": "bytes"
         },
         {
+          "internalType": "bytes",
           "name": "_offer",
           "type": "bytes"
         }
@@ -190,6 +210,7 @@
       "name": "createLiability",
       "outputs": [
         {
+          "internalType": "contract ILiability",
           "name": "",
           "type": "address"
         }
@@ -202,10 +223,12 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "contract ILiability",
           "name": "_liability",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "_start_gas",
           "type": "uint256"
         }
@@ -213,6 +236,7 @@
       "name": "liabilityCreated",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -225,10 +249,12 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "contract ILiability",
           "name": "_liability",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "_start_gas",
           "type": "uint256"
         }
@@ -236,6 +262,7 @@
       "name": "liabilityFinalized",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -245,24 +272,25 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"liability\",\"type\":\"address\"}],\"name\":\"NewLiability\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"lighthouse\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"NewLighthouse\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_demand\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"_offer\",\"type\":\"bytes\"}],\"name\":\"createLiability\",\"outputs\":[{\"internalType\":\"contract ILiability\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_minimalStake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_timeoutInBlocks\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"createLighthouse\",\"outputs\":[{\"internalType\":\"contract ILighthouse\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"gasConsumedOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"gasEpoch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"gasPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isLighthouse\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"contract ILiability\",\"name\":\"_liability\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_start_gas\",\"type\":\"uint256\"}],\"name\":\"liabilityCreated\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"contract ILiability\",\"name\":\"_liability\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_start_gas\",\"type\":\"uint256\"}],\"name\":\"liabilityFinalized\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"nonceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalGasConsumed\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gas\",\"type\":\"uint256\"}],\"name\":\"wnFromGas\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"createLiability(bytes,bytes)\":{\"details\":\"Create robot liability smart contract\",\"params\":{\"_demand\":\"ABI-encoded demand message\",\"_offer\":\"ABI-encoded offer message\"}},\"createLighthouse(uint256,uint256,string)\":{\"details\":\"Create lighthouse smart contract\",\"params\":{\"_minimalStake\":\"Minimal stake value of XRT token (one quota price)\",\"_name\":\"Lighthouse name,             example: 'my-name' will create 'my-name.lighthouse.4.robonomics.eth' domain\",\"_timeoutInBlocks\":\"Max time of lighthouse silence in blocks\"}},\"liabilityCreated(address,uint256)\":{\"details\":\"Is called after liability creation\",\"params\":{\"_liability\":\"Liability contract address\",\"_start_gas\":\"Transaction start gas level\"}},\"liabilityFinalized(address,uint256)\":{\"details\":\"Is called after liability finalization\",\"params\":{\"_liability\":\"Liability contract address\",\"_start_gas\":\"Transaction start gas level\"}},\"wnFromGas(uint256)\":{\"details\":\"XRT emission value for consumed gas\",\"params\":{\"_gas\":\"Gas consumed by robonomics program\"}}},\"title\":\"Robonomics liability factory interface\"},\"userdoc\":{\"methods\":{\"createLiability(bytes,bytes)\":{\"notice\":\"This method is for lighthouse contract use only\"},\"liabilityCreated(address,uint256)\":{\"notice\":\"This method is for lighthouse contract use only\"},\"liabilityFinalized(address,uint256)\":{\"notice\":\"This method is for lighthouse contract use only\"}}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/robonomics/interface/IFactory.sol\":\"IFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/robonomics/interface/IFactory.sol\":{\"keccak256\":\"0x9d2d778ea6850e85a4af8be9ae13290c180c646f194e61162e375c1cc8cfe626\",\"urls\":[\"bzz-raw://74d657a80793c89ed638f0d1e08e52f276866fccddfc5bb4c5b05bfa0582cb6d\",\"dweb:/ipfs/QmYi6J7yYJiSgXTwsZ6F7BkFKCgZFafvFDojv6Teyd4Ayu\"]},\"project:/contracts/robonomics/interface/ILiability.sol\":{\"keccak256\":\"0x684cb2e8a766166878d6c23cbdfbd2e905514d31101e64fe4e9bbdaf4653defd\",\"urls\":[\"bzz-raw://d1cc1ec255f81b10575aa5a826d1c3b86f8d8b30a25dd88ec2af995a1830ce54\",\"dweb:/ipfs/Qmcmu6Ti2AaJXLmKLpF4PZvVpAtaYfG7AktMxJDkkEb4Ny\"]},\"project:/contracts/robonomics/interface/ILighthouse.sol\":{\"keccak256\":\"0x41f80b9ba5d8e3700872c741846685dc13e8b82914d83d86d5e33800b32e7b64\",\"urls\":[\"bzz-raw://5d6681d018cd95f47e789b6947dc1c0a9cac0952c21c7c324c1447200d5d69a2\",\"dweb:/ipfs/QmUySV7CvxWJsexZ6QUFMgi6J7WwP3bJ7AhaptA5xYRWmL\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\nimport './ILiability.sol';\nimport './ILighthouse.sol';\n\n/**\n * @title Robonomics liability factory interface\n */\ncontract IFactory {\n    /**\n     * @dev New liability created \n     */\n    event NewLiability(address indexed liability);\n\n    /**\n     * @dev New lighthouse created\n     */\n    event NewLighthouse(address indexed lighthouse, string name);\n\n    /**\n     * @dev Lighthouse address mapping\n     */\n    mapping(address => bool) public isLighthouse;\n\n    /**\n     * @dev Nonce accounting\n     */\n    mapping(address => uint256) public nonceOf;\n\n    /**\n     * @dev Total GAS utilized by Robonomics network\n     */\n    uint256 public totalGasConsumed = 0;\n\n    /**\n     * @dev GAS utilized by liability contracts\n     */\n    mapping(address => uint256) public gasConsumedOf;\n\n    /**\n     * @dev The count of consumed gas for switch to next epoch \n     */\n    uint256 public constant gasEpoch = 347 * 10**10;\n\n    /**\n     * @dev Current gas price in wei\n     */\n    uint256 public gasPrice = 10 * 10**9;\n\n    /**\n     * @dev XRT emission value for consumed gas\n     * @param _gas Gas consumed by robonomics program\n     */\n    function wnFromGas(uint256 _gas) public view returns (uint256);\n\n    /**\n     * @dev Create lighthouse smart contract\n     * @param _minimalStake Minimal stake value of XRT token (one quota price)\n     * @param _timeoutInBlocks Max time of lighthouse silence in blocks\n     * @param _name Lighthouse name,\n     *              example: 'my-name' will create 'my-name.lighthouse.4.robonomics.eth' domain\n     */\n    function createLighthouse(\n        uint256 _minimalStake,\n        uint256 _timeoutInBlocks,\n        string calldata _name\n    ) external returns (ILighthouse);\n\n    /**\n     * @dev Create robot liability smart contract\n     * @param _demand ABI-encoded demand message\n     * @param _offer ABI-encoded offer message\n     * @notice This method is for lighthouse contract use only\n     */\n    function createLiability(\n        bytes calldata _demand,\n        bytes calldata _offer\n    ) external returns (ILiability);\n\n    /**\n     * @dev Is called after liability creation\n     * @param _liability Liability contract address\n     * @param _start_gas Transaction start gas level\n     * @notice This method is for lighthouse contract use only\n     */\n    function liabilityCreated(ILiability _liability, uint256 _start_gas) external returns (bool);\n\n    /**\n     * @dev Is called after liability finalization\n     * @param _liability Liability contract address\n     * @param _start_gas Transaction start gas level\n     * @notice This method is for lighthouse contract use only\n     */\n    function liabilityFinalized(ILiability _liability, uint256 _start_gas) external returns (bool);\n}\n",
-  "sourcePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/IFactory.sol",
+  "sourcePath": "/home/tubleronchik/work/neon_robonomics_contracts/robonomics_contracts/contracts/robonomics/interface/IFactory.sol",
   "ast": {
-    "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/IFactory.sol",
+    "absolutePath": "project:/contracts/robonomics/interface/IFactory.sol",
     "exportedSymbols": {
       "IFactory": [
-        3118
+        4731
       ]
     },
-    "id": 3119,
+    "id": 4732,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3031,
+        "id": 4644,
         "literals": [
           "solidity",
           "^",
@@ -270,27 +298,27 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:15"
+        "src": "0:23:28"
       },
       {
-        "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/ILiability.sol",
+        "absolutePath": "project:/contracts/robonomics/interface/ILiability.sol",
         "file": "./ILiability.sol",
-        "id": 3032,
+        "id": 4645,
         "nodeType": "ImportDirective",
-        "scope": 3119,
-        "sourceUnit": 3219,
-        "src": "25:26:15",
+        "scope": 4732,
+        "sourceUnit": 4832,
+        "src": "25:26:28",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/ILighthouse.sol",
+        "absolutePath": "project:/contracts/robonomics/interface/ILighthouse.sol",
         "file": "./ILighthouse.sol",
-        "id": 3033,
+        "id": 4646,
         "nodeType": "ImportDirective",
-        "scope": 3119,
-        "sourceUnit": 3312,
-        "src": "52:27:15",
+        "scope": 4732,
+        "sourceUnit": 4925,
+        "src": "52:27:28",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -300,9 +328,9 @@
         "contractKind": "contract",
         "documentation": "@title Robonomics liability factory interface",
         "fullyImplemented": false,
-        "id": 3118,
+        "id": 4731,
         "linearizedBaseContracts": [
-          3118
+          4731
         ],
         "name": "IFactory",
         "nodeType": "ContractDefinition",
@@ -310,21 +338,21 @@
           {
             "anonymous": false,
             "documentation": "@dev New liability created ",
-            "id": 3037,
+            "id": 4650,
             "name": "NewLiability",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 3036,
+              "id": 4649,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3035,
+                  "id": 4648,
                   "indexed": true,
                   "name": "liability",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3037,
-                  "src": "232:25:15",
+                  "scope": 4650,
+                  "src": "232:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -332,10 +360,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3034,
+                    "id": 4647,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "232:7:15",
+                    "src": "232:7:28",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -346,28 +374,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "231:27:15"
+              "src": "231:27:28"
             },
-            "src": "213:46:15"
+            "src": "213:46:28"
           },
           {
             "anonymous": false,
             "documentation": "@dev New lighthouse created",
-            "id": 3043,
+            "id": 4656,
             "name": "NewLighthouse",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 3042,
+              "id": 4655,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3039,
+                  "id": 4652,
                   "indexed": true,
                   "name": "lighthouse",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3043,
-                  "src": "336:26:15",
+                  "scope": 4656,
+                  "src": "336:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -375,10 +403,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3038,
+                    "id": 4651,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "336:7:15",
+                    "src": "336:7:28",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -390,12 +418,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 3041,
+                  "id": 4654,
                   "indexed": false,
                   "name": "name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3043,
-                  "src": "364:11:15",
+                  "scope": 4656,
+                  "src": "364:11:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -403,10 +431,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 3040,
+                    "id": 4653,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "364:6:15",
+                    "src": "364:6:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -416,17 +444,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "335:41:15"
+              "src": "335:41:28"
             },
-            "src": "316:61:15"
+            "src": "316:61:28"
           },
           {
             "constant": false,
-            "id": 3047,
+            "id": 4660,
             "name": "isLighthouse",
             "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "438:44:15",
+            "scope": 4731,
+            "src": "438:44:28",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -434,28 +462,28 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 3046,
+              "id": 4659,
               "keyType": {
-                "id": 3044,
+                "id": 4657,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "446:7:15",
+                "src": "446:7:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "438:24:15",
+              "src": "438:24:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 3045,
+                "id": 4658,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
-                "src": "457:4:15",
+                "src": "457:4:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bool",
                   "typeString": "bool"
@@ -467,11 +495,11 @@
           },
           {
             "constant": false,
-            "id": 3051,
+            "id": 4664,
             "name": "nonceOf",
             "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "534:42:15",
+            "scope": 4731,
+            "src": "534:42:28",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -479,28 +507,28 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 3050,
+              "id": 4663,
               "keyType": {
-                "id": 3048,
+                "id": 4661,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "542:7:15",
+                "src": "542:7:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "534:27:15",
+              "src": "534:27:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 3049,
+                "id": 4662,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "553:7:15",
+                "src": "553:7:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -512,11 +540,11 @@
           },
           {
             "constant": false,
-            "id": 3054,
+            "id": 4667,
             "name": "totalGasConsumed",
             "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "652:35:15",
+            "scope": 4731,
+            "src": "652:35:28",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -524,10 +552,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3052,
+              "id": 4665,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "652:7:15",
+              "src": "652:7:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -536,14 +564,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "30",
-              "id": 3053,
+              "id": 4666,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "686:1:15",
+              "src": "686:1:28",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_0_by_1",
@@ -555,11 +583,11 @@
           },
           {
             "constant": false,
-            "id": 3058,
+            "id": 4671,
             "name": "gasConsumedOf",
             "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "758:48:15",
+            "scope": 4731,
+            "src": "758:48:28",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -567,28 +595,28 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 3057,
+              "id": 4670,
               "keyType": {
-                "id": 3055,
+                "id": 4668,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "766:7:15",
+                "src": "766:7:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
                 }
               },
               "nodeType": "Mapping",
-              "src": "758:27:15",
+              "src": "758:27:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 3056,
+                "id": 4669,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "777:7:15",
+                "src": "777:7:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -600,11 +628,11 @@
           },
           {
             "constant": true,
-            "id": 3065,
+            "id": 4678,
             "name": "gasEpoch",
             "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "893:47:15",
+            "scope": 4731,
+            "src": "893:47:28",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -612,10 +640,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3059,
+              "id": 4672,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "893:7:15",
+              "src": "893:7:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -627,7 +655,7 @@
                 "typeIdentifier": "t_rational_3470000000000_by_1",
                 "typeString": "int_const 3470000000000"
               },
-              "id": 3064,
+              "id": 4677,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -635,14 +663,14 @@
               "leftExpression": {
                 "argumentTypes": null,
                 "hexValue": "333437",
-                "id": 3060,
+                "id": 4673,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "928:3:15",
+                "src": "928:3:28",
                 "subdenomination": null,
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_347_by_1",
@@ -658,7 +686,7 @@
                   "typeIdentifier": "t_rational_10000000000_by_1",
                   "typeString": "int_const 10000000000"
                 },
-                "id": 3063,
+                "id": 4676,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
@@ -666,14 +694,14 @@
                 "leftExpression": {
                   "argumentTypes": null,
                   "hexValue": "3130",
-                  "id": 3061,
+                  "id": 4674,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
                   "kind": "number",
                   "lValueRequested": false,
                   "nodeType": "Literal",
-                  "src": "934:2:15",
+                  "src": "934:2:28",
                   "subdenomination": null,
                   "typeDescriptions": {
                     "typeIdentifier": "t_rational_10_by_1",
@@ -686,14 +714,14 @@
                 "rightExpression": {
                   "argumentTypes": null,
                   "hexValue": "3130",
-                  "id": 3062,
+                  "id": 4675,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
                   "kind": "number",
                   "lValueRequested": false,
                   "nodeType": "Literal",
-                  "src": "938:2:15",
+                  "src": "938:2:28",
                   "subdenomination": null,
                   "typeDescriptions": {
                     "typeIdentifier": "t_rational_10_by_1",
@@ -701,13 +729,13 @@
                   },
                   "value": "10"
                 },
-                "src": "934:6:15",
+                "src": "934:6:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_10000000000_by_1",
                   "typeString": "int_const 10000000000"
                 }
               },
-              "src": "928:12:15",
+              "src": "928:12:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_3470000000000_by_1",
                 "typeString": "int_const 3470000000000"
@@ -717,11 +745,11 @@
           },
           {
             "constant": false,
-            "id": 3072,
+            "id": 4685,
             "name": "gasPrice",
             "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "1000:36:15",
+            "scope": 4731,
+            "src": "1000:36:28",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -729,10 +757,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3066,
+              "id": 4679,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1000:7:15",
+              "src": "1000:7:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -744,7 +772,7 @@
                 "typeIdentifier": "t_rational_10000000000_by_1",
                 "typeString": "int_const 10000000000"
               },
-              "id": 3071,
+              "id": 4684,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -752,14 +780,14 @@
               "leftExpression": {
                 "argumentTypes": null,
                 "hexValue": "3130",
-                "id": 3067,
+                "id": 4680,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "1026:2:15",
+                "src": "1026:2:28",
                 "subdenomination": null,
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_10_by_1",
@@ -775,7 +803,7 @@
                   "typeIdentifier": "t_rational_1000000000_by_1",
                   "typeString": "int_const 1000000000"
                 },
-                "id": 3070,
+                "id": 4683,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
@@ -783,14 +811,14 @@
                 "leftExpression": {
                   "argumentTypes": null,
                   "hexValue": "3130",
-                  "id": 3068,
+                  "id": 4681,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
                   "kind": "number",
                   "lValueRequested": false,
                   "nodeType": "Literal",
-                  "src": "1031:2:15",
+                  "src": "1031:2:28",
                   "subdenomination": null,
                   "typeDescriptions": {
                     "typeIdentifier": "t_rational_10_by_1",
@@ -803,14 +831,14 @@
                 "rightExpression": {
                   "argumentTypes": null,
                   "hexValue": "39",
-                  "id": 3069,
+                  "id": 4682,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
                   "kind": "number",
                   "lValueRequested": false,
                   "nodeType": "Literal",
-                  "src": "1035:1:15",
+                  "src": "1035:1:28",
                   "subdenomination": null,
                   "typeDescriptions": {
                     "typeIdentifier": "t_rational_9_by_1",
@@ -818,13 +846,13 @@
                   },
                   "value": "9"
                 },
-                "src": "1031:5:15",
+                "src": "1031:5:28",
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_1000000000_by_1",
                   "typeString": "int_const 1000000000"
                 }
               },
-              "src": "1026:10:15",
+              "src": "1026:10:28",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10000000000_by_1",
                 "typeString": "int_const 10000000000"
@@ -835,23 +863,23 @@
           {
             "body": null,
             "documentation": "@dev XRT emission value for consumed gas\n@param _gas Gas consumed by robonomics program",
-            "id": 3079,
+            "id": 4692,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "wnFromGas",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3075,
+              "id": 4688,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3074,
+                  "id": 4687,
                   "name": "_gas",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3079,
-                  "src": "1180:12:15",
+                  "scope": 4692,
+                  "src": "1180:12:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -859,10 +887,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3073,
+                    "id": 4686,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1180:7:15",
+                    "src": "1180:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -872,19 +900,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1179:14:15"
+              "src": "1179:14:28"
             },
             "returnParameters": {
-              "id": 3078,
+              "id": 4691,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3077,
+                  "id": 4690,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3079,
-                  "src": "1215:7:15",
+                  "scope": 4692,
+                  "src": "1215:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -892,10 +920,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3076,
+                    "id": 4689,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1215:7:15",
+                    "src": "1215:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -905,10 +933,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1214:9:15"
+              "src": "1214:9:28"
             },
-            "scope": 3118,
-            "src": "1161:63:15",
+            "scope": 4731,
+            "src": "1161:63:28",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -916,23 +944,23 @@
           {
             "body": null,
             "documentation": "@dev Create lighthouse smart contract\n@param _minimalStake Minimal stake value of XRT token (one quota price)\n@param _timeoutInBlocks Max time of lighthouse silence in blocks\n@param _name Lighthouse name,\n             example: 'my-name' will create 'my-name.lighthouse.4.robonomics.eth' domain",
-            "id": 3090,
+            "id": 4703,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createLighthouse",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3086,
+              "id": 4699,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3081,
+                  "id": 4694,
                   "name": "_minimalStake",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1610:21:15",
+                  "scope": 4703,
+                  "src": "1610:21:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -940,10 +968,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3080,
+                    "id": 4693,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1610:7:15",
+                    "src": "1610:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -954,11 +982,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 3083,
+                  "id": 4696,
                   "name": "_timeoutInBlocks",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1641:24:15",
+                  "scope": 4703,
+                  "src": "1641:24:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -966,10 +994,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3082,
+                    "id": 4695,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1641:7:15",
+                    "src": "1641:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -980,11 +1008,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 3085,
+                  "id": 4698,
                   "name": "_name",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1675:21:15",
+                  "scope": 4703,
+                  "src": "1675:21:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -992,10 +1020,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 3084,
+                    "id": 4697,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1675:6:15",
+                    "src": "1675:6:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1005,34 +1033,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1600:102:15"
+              "src": "1600:102:28"
             },
             "returnParameters": {
-              "id": 3089,
+              "id": 4702,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3088,
+                  "id": 4701,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1721:11:15",
+                  "scope": 4703,
+                  "src": "1721:11:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILighthouse_$3311",
+                    "typeIdentifier": "t_contract$_ILighthouse_$4924",
                     "typeString": "contract ILighthouse"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 3087,
+                    "id": 4700,
                     "name": "ILighthouse",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3311,
-                    "src": "1721:11:15",
+                    "referencedDeclaration": 4924,
+                    "src": "1721:11:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILighthouse_$3311",
+                      "typeIdentifier": "t_contract$_ILighthouse_$4924",
                       "typeString": "contract ILighthouse"
                     }
                   },
@@ -1040,10 +1068,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1720:13:15"
+              "src": "1720:13:28"
             },
-            "scope": 3118,
-            "src": "1575:159:15",
+            "scope": 4731,
+            "src": "1575:159:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1051,23 +1079,23 @@
           {
             "body": null,
             "documentation": "@dev Create robot liability smart contract\n@param _demand ABI-encoded demand message\n@param _offer ABI-encoded offer message\n@notice This method is for lighthouse contract use only",
-            "id": 3099,
+            "id": 4712,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createLiability",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3095,
+              "id": 4708,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3092,
+                  "id": 4705,
                   "name": "_demand",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3099,
-                  "src": "1999:22:15",
+                  "scope": 4712,
+                  "src": "1999:22:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -1075,10 +1103,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 3091,
+                    "id": 4704,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1999:5:15",
+                    "src": "1999:5:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1089,11 +1117,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 3094,
+                  "id": 4707,
                   "name": "_offer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3099,
-                  "src": "2031:21:15",
+                  "scope": 4712,
+                  "src": "2031:21:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
@@ -1101,10 +1129,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 3093,
+                    "id": 4706,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2031:5:15",
+                    "src": "2031:5:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -1114,34 +1142,34 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1989:69:15"
+              "src": "1989:69:28"
             },
             "returnParameters": {
-              "id": 3098,
+              "id": 4711,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3097,
+                  "id": 4710,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3099,
-                  "src": "2077:10:15",
+                  "scope": 4712,
+                  "src": "2077:10:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILiability_$3218",
+                    "typeIdentifier": "t_contract$_ILiability_$4831",
                     "typeString": "contract ILiability"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 3096,
+                    "id": 4709,
                     "name": "ILiability",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3218,
-                    "src": "2077:10:15",
+                    "referencedDeclaration": 4831,
+                    "src": "2077:10:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILiability_$3218",
+                      "typeIdentifier": "t_contract$_ILiability_$4831",
                       "typeString": "contract ILiability"
                     }
                   },
@@ -1149,10 +1177,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2076:12:15"
+              "src": "2076:12:28"
             },
-            "scope": 3118,
-            "src": "1965:124:15",
+            "scope": 4731,
+            "src": "1965:124:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1160,38 +1188,38 @@
           {
             "body": null,
             "documentation": "@dev Is called after liability creation\n@param _liability Liability contract address\n@param _start_gas Transaction start gas level\n@notice This method is for lighthouse contract use only",
-            "id": 3108,
+            "id": 4721,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "liabilityCreated",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3104,
+              "id": 4717,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3101,
+                  "id": 4714,
                   "name": "_liability",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3108,
-                  "src": "2352:21:15",
+                  "scope": 4721,
+                  "src": "2352:21:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILiability_$3218",
+                    "typeIdentifier": "t_contract$_ILiability_$4831",
                     "typeString": "contract ILiability"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 3100,
+                    "id": 4713,
                     "name": "ILiability",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3218,
-                    "src": "2352:10:15",
+                    "referencedDeclaration": 4831,
+                    "src": "2352:10:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILiability_$3218",
+                      "typeIdentifier": "t_contract$_ILiability_$4831",
                       "typeString": "contract ILiability"
                     }
                   },
@@ -1200,11 +1228,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 3103,
+                  "id": 4716,
                   "name": "_start_gas",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3108,
-                  "src": "2375:18:15",
+                  "scope": 4721,
+                  "src": "2375:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1212,10 +1240,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3102,
+                    "id": 4715,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2375:7:15",
+                    "src": "2375:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1225,19 +1253,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2351:43:15"
+              "src": "2351:43:28"
             },
             "returnParameters": {
-              "id": 3107,
+              "id": 4720,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3106,
+                  "id": 4719,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3108,
-                  "src": "2413:4:15",
+                  "scope": 4721,
+                  "src": "2413:4:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1245,10 +1273,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3105,
+                    "id": 4718,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2413:4:15",
+                    "src": "2413:4:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1258,10 +1286,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2412:6:15"
+              "src": "2412:6:28"
             },
-            "scope": 3118,
-            "src": "2326:93:15",
+            "scope": 4731,
+            "src": "2326:93:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -1269,38 +1297,38 @@
           {
             "body": null,
             "documentation": "@dev Is called after liability finalization\n@param _liability Liability contract address\n@param _start_gas Transaction start gas level\n@notice This method is for lighthouse contract use only",
-            "id": 3117,
+            "id": 4730,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "liabilityFinalized",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3113,
+              "id": 4726,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3110,
+                  "id": 4723,
                   "name": "_liability",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3117,
-                  "src": "2688:21:15",
+                  "scope": 4730,
+                  "src": "2688:21:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILiability_$3218",
+                    "typeIdentifier": "t_contract$_ILiability_$4831",
                     "typeString": "contract ILiability"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 3109,
+                    "id": 4722,
                     "name": "ILiability",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3218,
-                    "src": "2688:10:15",
+                    "referencedDeclaration": 4831,
+                    "src": "2688:10:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILiability_$3218",
+                      "typeIdentifier": "t_contract$_ILiability_$4831",
                       "typeString": "contract ILiability"
                     }
                   },
@@ -1309,11 +1337,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 3112,
+                  "id": 4725,
                   "name": "_start_gas",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3117,
-                  "src": "2711:18:15",
+                  "scope": 4730,
+                  "src": "2711:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1321,10 +1349,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 3111,
+                    "id": 4724,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2711:7:15",
+                    "src": "2711:7:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1334,19 +1362,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2687:43:15"
+              "src": "2687:43:28"
             },
             "returnParameters": {
-              "id": 3116,
+              "id": 4729,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3115,
+                  "id": 4728,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3117,
-                  "src": "2749:4:15",
+                  "scope": 4730,
+                  "src": "2749:4:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1354,10 +1382,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3114,
+                    "id": 4727,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2749:4:15",
+                    "src": "2749:4:28",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1367,1159 +1395,1217 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2748:6:15"
+              "src": "2748:6:28"
             },
-            "scope": 3118,
-            "src": "2660:95:15",
+            "scope": 4731,
+            "src": "2660:95:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 3119,
-        "src": "138:2619:15"
+        "scope": 4732,
+        "src": "138:2619:28"
       }
     ],
-    "src": "0:2758:15"
+    "src": "0:2758:28"
   },
   "legacyAST": {
-    "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/IFactory.sol",
-    "exportedSymbols": {
-      "IFactory": [
-        3118
-      ]
+    "attributes": {
+      "absolutePath": "project:/contracts/robonomics/interface/IFactory.sol",
+      "exportedSymbols": {
+        "IFactory": [
+          4731
+        ]
+      }
     },
-    "id": 3119,
-    "nodeType": "SourceUnit",
-    "nodes": [
+    "children": [
       {
-        "id": 3031,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".0"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:23:15"
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 4644,
+        "name": "PragmaDirective",
+        "src": "0:23:28"
       },
       {
-        "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/ILiability.sol",
-        "file": "./ILiability.sol",
-        "id": 3032,
-        "nodeType": "ImportDirective",
-        "scope": 3119,
-        "sourceUnit": 3219,
-        "src": "25:26:15",
-        "symbolAliases": [],
-        "unitAlias": ""
+        "attributes": {
+          "SourceUnit": 4832,
+          "absolutePath": "project:/contracts/robonomics/interface/ILiability.sol",
+          "file": "./ILiability.sol",
+          "scope": 4732,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4645,
+        "name": "ImportDirective",
+        "src": "25:26:28"
       },
       {
-        "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/ILighthouse.sol",
-        "file": "./ILighthouse.sol",
-        "id": 3033,
-        "nodeType": "ImportDirective",
-        "scope": 3119,
-        "sourceUnit": 3312,
-        "src": "52:27:15",
-        "symbolAliases": [],
-        "unitAlias": ""
+        "attributes": {
+          "SourceUnit": 4925,
+          "absolutePath": "project:/contracts/robonomics/interface/ILighthouse.sol",
+          "file": "./ILighthouse.sol",
+          "scope": 4732,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4646,
+        "name": "ImportDirective",
+        "src": "52:27:28"
       },
       {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "contract",
-        "documentation": "@title Robonomics liability factory interface",
-        "fullyImplemented": false,
-        "id": 3118,
-        "linearizedBaseContracts": [
-          3118
-        ],
-        "name": "IFactory",
-        "nodeType": "ContractDefinition",
-        "nodes": [
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title Robonomics liability factory interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4731
+          ],
+          "name": "IFactory",
+          "scope": 4732
+        },
+        "children": [
           {
-            "anonymous": false,
-            "documentation": "@dev New liability created ",
-            "id": 3037,
-            "name": "NewLiability",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 3036,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3035,
-                  "indexed": true,
-                  "name": "liability",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3037,
-                  "src": "232:25:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 3034,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "232:7:15",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "231:27:15"
+            "attributes": {
+              "anonymous": false,
+              "documentation": "@dev New liability created ",
+              "name": "NewLiability"
             },
-            "src": "213:46:15"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "liability",
+                      "scope": 4650,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4647,
+                        "name": "ElementaryTypeName",
+                        "src": "232:7:28"
+                      }
+                    ],
+                    "id": 4648,
+                    "name": "VariableDeclaration",
+                    "src": "232:25:28"
+                  }
+                ],
+                "id": 4649,
+                "name": "ParameterList",
+                "src": "231:27:28"
+              }
+            ],
+            "id": 4650,
+            "name": "EventDefinition",
+            "src": "213:46:28"
           },
           {
-            "anonymous": false,
-            "documentation": "@dev New lighthouse created",
-            "id": 3043,
-            "name": "NewLighthouse",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 3042,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3039,
-                  "indexed": true,
-                  "name": "lighthouse",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3043,
-                  "src": "336:26:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
+            "attributes": {
+              "anonymous": false,
+              "documentation": "@dev New lighthouse created",
+              "name": "NewLighthouse"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "lighthouse",
+                      "scope": 4656,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4651,
+                        "name": "ElementaryTypeName",
+                        "src": "336:7:28"
+                      }
+                    ],
+                    "id": 4652,
+                    "name": "VariableDeclaration",
+                    "src": "336:26:28"
                   },
-                  "typeName": {
-                    "id": 3038,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "336:7:15",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "name",
+                      "scope": 4656,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 4653,
+                        "name": "ElementaryTypeName",
+                        "src": "364:6:28"
+                      }
+                    ],
+                    "id": 4654,
+                    "name": "VariableDeclaration",
+                    "src": "364:11:28"
+                  }
+                ],
+                "id": 4655,
+                "name": "ParameterList",
+                "src": "335:41:28"
+              }
+            ],
+            "id": 4656,
+            "name": "EventDefinition",
+            "src": "316:61:28"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "isLighthouse",
+              "scope": 4731,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => bool)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => bool)"
                 },
-                {
-                  "constant": false,
-                  "id": 3041,
-                  "indexed": false,
-                  "name": "name",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3043,
-                  "src": "364:11:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 4657,
+                    "name": "ElementaryTypeName",
+                    "src": "446:7:28"
                   },
-                  "typeName": {
-                    "id": 3040,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "364:6:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
-                    }
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 4658,
+                    "name": "ElementaryTypeName",
+                    "src": "457:4:28"
+                  }
+                ],
+                "id": 4659,
+                "name": "Mapping",
+                "src": "438:24:28"
+              }
+            ],
+            "id": 4660,
+            "name": "VariableDeclaration",
+            "src": "438:44:28"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "nonceOf",
+              "scope": 4731,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => uint256)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => uint256)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 4661,
+                    "name": "ElementaryTypeName",
+                    "src": "542:7:28"
                   },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "335:41:15"
-            },
-            "src": "316:61:15"
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 4662,
+                    "name": "ElementaryTypeName",
+                    "src": "553:7:28"
+                  }
+                ],
+                "id": 4663,
+                "name": "Mapping",
+                "src": "534:27:28"
+              }
+            ],
+            "id": 4664,
+            "name": "VariableDeclaration",
+            "src": "534:42:28"
           },
           {
-            "constant": false,
-            "id": 3047,
-            "name": "isLighthouse",
-            "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "438:44:15",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
-              "typeString": "mapping(address => bool)"
+            "attributes": {
+              "constant": false,
+              "name": "totalGasConsumed",
+              "scope": 4731,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
             },
-            "typeName": {
-              "id": 3046,
-              "keyType": {
-                "id": 3044,
-                "name": "address",
-                "nodeType": "ElementaryTypeName",
-                "src": "446:7:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_address",
-                  "typeString": "address"
-                }
-              },
-              "nodeType": "Mapping",
-              "src": "438:24:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
-                "typeString": "mapping(address => bool)"
-              },
-              "valueType": {
-                "id": 3045,
-                "name": "bool",
-                "nodeType": "ElementaryTypeName",
-                "src": "457:4:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_bool",
-                  "typeString": "bool"
-                }
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          },
-          {
-            "constant": false,
-            "id": 3051,
-            "name": "nonceOf",
-            "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "534:42:15",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
-              "typeString": "mapping(address => uint256)"
-            },
-            "typeName": {
-              "id": 3050,
-              "keyType": {
-                "id": 3048,
-                "name": "address",
-                "nodeType": "ElementaryTypeName",
-                "src": "542:7:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_address",
-                  "typeString": "address"
-                }
-              },
-              "nodeType": "Mapping",
-              "src": "534:27:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
-                "typeString": "mapping(address => uint256)"
-              },
-              "valueType": {
-                "id": 3049,
-                "name": "uint256",
-                "nodeType": "ElementaryTypeName",
-                "src": "553:7:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                }
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          },
-          {
-            "constant": false,
-            "id": 3054,
-            "name": "totalGasConsumed",
-            "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "652:35:15",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3052,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "652:7:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "30",
-              "id": 3053,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "686:1:15",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_0_by_1",
-                "typeString": "int_const 0"
-              },
-              "value": "0"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": false,
-            "id": 3058,
-            "name": "gasConsumedOf",
-            "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "758:48:15",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
-              "typeString": "mapping(address => uint256)"
-            },
-            "typeName": {
-              "id": 3057,
-              "keyType": {
-                "id": 3055,
-                "name": "address",
-                "nodeType": "ElementaryTypeName",
-                "src": "766:7:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_address",
-                  "typeString": "address"
-                }
-              },
-              "nodeType": "Mapping",
-              "src": "758:27:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
-                "typeString": "mapping(address => uint256)"
-              },
-              "valueType": {
-                "id": 3056,
-                "name": "uint256",
-                "nodeType": "ElementaryTypeName",
-                "src": "777:7:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                }
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3065,
-            "name": "gasEpoch",
-            "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "893:47:15",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3059,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "893:7:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "commonType": {
-                "typeIdentifier": "t_rational_3470000000000_by_1",
-                "typeString": "int_const 3470000000000"
-              },
-              "id": 3064,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "lValueRequested": false,
-              "leftExpression": {
-                "argumentTypes": null,
-                "hexValue": "333437",
-                "id": 3060,
-                "isConstant": false,
-                "isLValue": false,
-                "isPure": true,
-                "kind": "number",
-                "lValueRequested": false,
-                "nodeType": "Literal",
-                "src": "928:3:15",
-                "subdenomination": null,
-                "typeDescriptions": {
-                  "typeIdentifier": "t_rational_347_by_1",
-                  "typeString": "int_const 347"
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
                 },
-                "value": "347"
+                "id": 4665,
+                "name": "ElementaryTypeName",
+                "src": "652:7:28"
               },
-              "nodeType": "BinaryOperation",
-              "operator": "*",
-              "rightExpression": {
-                "argumentTypes": null,
-                "commonType": {
-                  "typeIdentifier": "t_rational_10000000000_by_1",
-                  "typeString": "int_const 10000000000"
-                },
-                "id": 3063,
-                "isConstant": false,
-                "isLValue": false,
-                "isPure": true,
-                "lValueRequested": false,
-                "leftExpression": {
+              {
+                "attributes": {
                   "argumentTypes": null,
-                  "hexValue": "3130",
-                  "id": 3061,
+                  "hexvalue": "30",
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
-                  "kind": "number",
                   "lValueRequested": false,
-                  "nodeType": "Literal",
-                  "src": "934:2:15",
                   "subdenomination": null,
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_rational_10_by_1",
-                    "typeString": "int_const 10"
-                  },
-                  "value": "10"
+                  "token": "number",
+                  "type": "int_const 0",
+                  "value": "0"
                 },
-                "nodeType": "BinaryOperation",
-                "operator": "**",
-                "rightExpression": {
+                "id": 4666,
+                "name": "Literal",
+                "src": "686:1:28"
+              }
+            ],
+            "id": 4667,
+            "name": "VariableDeclaration",
+            "src": "652:35:28"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "gasConsumedOf",
+              "scope": 4731,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => uint256)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => uint256)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 4668,
+                    "name": "ElementaryTypeName",
+                    "src": "766:7:28"
+                  },
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 4669,
+                    "name": "ElementaryTypeName",
+                    "src": "777:7:28"
+                  }
+                ],
+                "id": 4670,
+                "name": "Mapping",
+                "src": "758:27:28"
+              }
+            ],
+            "id": 4671,
+            "name": "VariableDeclaration",
+            "src": "758:48:28"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "gasEpoch",
+              "scope": 4731,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 4672,
+                "name": "ElementaryTypeName",
+                "src": "893:7:28"
+              },
+              {
+                "attributes": {
                   "argumentTypes": null,
-                  "hexValue": "3130",
-                  "id": 3062,
+                  "commonType": {
+                    "typeIdentifier": "t_rational_3470000000000_by_1",
+                    "typeString": "int_const 3470000000000"
+                  },
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
-                  "kind": "number",
                   "lValueRequested": false,
-                  "nodeType": "Literal",
-                  "src": "938:2:15",
-                  "subdenomination": null,
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_rational_10_by_1",
-                    "typeString": "int_const 10"
-                  },
-                  "value": "10"
+                  "operator": "*",
+                  "type": "int_const 3470000000000"
                 },
-                "src": "934:6:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_rational_10000000000_by_1",
-                  "typeString": "int_const 10000000000"
-                }
-              },
-              "src": "928:12:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_3470000000000_by_1",
-                "typeString": "int_const 3470000000000"
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "hexvalue": "333437",
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "subdenomination": null,
+                      "token": "number",
+                      "type": "int_const 347",
+                      "value": "347"
+                    },
+                    "id": 4673,
+                    "name": "Literal",
+                    "src": "928:3:28"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_rational_10000000000_by_1",
+                        "typeString": "int_const 10000000000"
+                      },
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "operator": "**",
+                      "type": "int_const 10000000000"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "3130",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "number",
+                          "type": "int_const 10",
+                          "value": "10"
+                        },
+                        "id": 4674,
+                        "name": "Literal",
+                        "src": "934:2:28"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "3130",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "number",
+                          "type": "int_const 10",
+                          "value": "10"
+                        },
+                        "id": 4675,
+                        "name": "Literal",
+                        "src": "938:2:28"
+                      }
+                    ],
+                    "id": 4676,
+                    "name": "BinaryOperation",
+                    "src": "934:6:28"
+                  }
+                ],
+                "id": 4677,
+                "name": "BinaryOperation",
+                "src": "928:12:28"
               }
-            },
-            "visibility": "public"
+            ],
+            "id": 4678,
+            "name": "VariableDeclaration",
+            "src": "893:47:28"
           },
           {
-            "constant": false,
-            "id": 3072,
-            "name": "gasPrice",
-            "nodeType": "VariableDeclaration",
-            "scope": 3118,
-            "src": "1000:36:15",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
+            "attributes": {
+              "constant": false,
+              "name": "gasPrice",
+              "scope": 4731,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
             },
-            "typeName": {
-              "id": 3066,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1000:7:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "commonType": {
-                "typeIdentifier": "t_rational_10000000000_by_1",
-                "typeString": "int_const 10000000000"
-              },
-              "id": 3071,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "lValueRequested": false,
-              "leftExpression": {
-                "argumentTypes": null,
-                "hexValue": "3130",
-                "id": 3067,
-                "isConstant": false,
-                "isLValue": false,
-                "isPure": true,
-                "kind": "number",
-                "lValueRequested": false,
-                "nodeType": "Literal",
-                "src": "1026:2:15",
-                "subdenomination": null,
-                "typeDescriptions": {
-                  "typeIdentifier": "t_rational_10_by_1",
-                  "typeString": "int_const 10"
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
                 },
-                "value": "10"
+                "id": 4679,
+                "name": "ElementaryTypeName",
+                "src": "1000:7:28"
               },
-              "nodeType": "BinaryOperation",
-              "operator": "*",
-              "rightExpression": {
-                "argumentTypes": null,
-                "commonType": {
-                  "typeIdentifier": "t_rational_1000000000_by_1",
-                  "typeString": "int_const 1000000000"
-                },
-                "id": 3070,
-                "isConstant": false,
-                "isLValue": false,
-                "isPure": true,
-                "lValueRequested": false,
-                "leftExpression": {
+              {
+                "attributes": {
                   "argumentTypes": null,
-                  "hexValue": "3130",
-                  "id": 3068,
+                  "commonType": {
+                    "typeIdentifier": "t_rational_10000000000_by_1",
+                    "typeString": "int_const 10000000000"
+                  },
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
-                  "kind": "number",
                   "lValueRequested": false,
-                  "nodeType": "Literal",
-                  "src": "1031:2:15",
-                  "subdenomination": null,
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_rational_10_by_1",
-                    "typeString": "int_const 10"
-                  },
-                  "value": "10"
+                  "operator": "*",
+                  "type": "int_const 10000000000"
                 },
-                "nodeType": "BinaryOperation",
-                "operator": "**",
-                "rightExpression": {
-                  "argumentTypes": null,
-                  "hexValue": "39",
-                  "id": 3069,
-                  "isConstant": false,
-                  "isLValue": false,
-                  "isPure": true,
-                  "kind": "number",
-                  "lValueRequested": false,
-                  "nodeType": "Literal",
-                  "src": "1035:1:15",
-                  "subdenomination": null,
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_rational_9_by_1",
-                    "typeString": "int_const 9"
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "hexvalue": "3130",
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "subdenomination": null,
+                      "token": "number",
+                      "type": "int_const 10",
+                      "value": "10"
+                    },
+                    "id": 4680,
+                    "name": "Literal",
+                    "src": "1026:2:28"
                   },
-                  "value": "9"
-                },
-                "src": "1031:5:15",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_rational_1000000000_by_1",
-                  "typeString": "int_const 1000000000"
-                }
-              },
-              "src": "1026:10:15",
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_10000000000_by_1",
-                "typeString": "int_const 10000000000"
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_rational_1000000000_by_1",
+                        "typeString": "int_const 1000000000"
+                      },
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "operator": "**",
+                      "type": "int_const 1000000000"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "3130",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "number",
+                          "type": "int_const 10",
+                          "value": "10"
+                        },
+                        "id": 4681,
+                        "name": "Literal",
+                        "src": "1031:2:28"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "39",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "number",
+                          "type": "int_const 9",
+                          "value": "9"
+                        },
+                        "id": 4682,
+                        "name": "Literal",
+                        "src": "1035:1:28"
+                      }
+                    ],
+                    "id": 4683,
+                    "name": "BinaryOperation",
+                    "src": "1031:5:28"
+                  }
+                ],
+                "id": 4684,
+                "name": "BinaryOperation",
+                "src": "1026:10:28"
               }
-            },
-            "visibility": "public"
+            ],
+            "id": 4685,
+            "name": "VariableDeclaration",
+            "src": "1000:36:28"
           },
           {
-            "body": null,
-            "documentation": "@dev XRT emission value for consumed gas\n@param _gas Gas consumed by robonomics program",
-            "id": 3079,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "wnFromGas",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3075,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3074,
-                  "name": "_gas",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3079,
-                  "src": "1180:12:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3073,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1180:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "documentation": "@dev XRT emission value for consumed gas\n@param _gas Gas consumed by robonomics program",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
               ],
-              "src": "1179:14:15"
+              "name": "wnFromGas",
+              "scope": 4731,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
             },
-            "returnParameters": {
-              "id": 3078,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3077,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3079,
-                  "src": "1215:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3076,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1215:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1214:9:15"
-            },
-            "scope": 3118,
-            "src": "1161:63:15",
-            "stateMutability": "view",
-            "superFunction": null,
-            "visibility": "public"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_gas",
+                      "scope": 4692,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4686,
+                        "name": "ElementaryTypeName",
+                        "src": "1180:7:28"
+                      }
+                    ],
+                    "id": 4687,
+                    "name": "VariableDeclaration",
+                    "src": "1180:12:28"
+                  }
+                ],
+                "id": 4688,
+                "name": "ParameterList",
+                "src": "1179:14:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4692,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4689,
+                        "name": "ElementaryTypeName",
+                        "src": "1215:7:28"
+                      }
+                    ],
+                    "id": 4690,
+                    "name": "VariableDeclaration",
+                    "src": "1215:7:28"
+                  }
+                ],
+                "id": 4691,
+                "name": "ParameterList",
+                "src": "1214:9:28"
+              }
+            ],
+            "id": 4692,
+            "name": "FunctionDefinition",
+            "src": "1161:63:28"
           },
           {
-            "body": null,
-            "documentation": "@dev Create lighthouse smart contract\n@param _minimalStake Minimal stake value of XRT token (one quota price)\n@param _timeoutInBlocks Max time of lighthouse silence in blocks\n@param _name Lighthouse name,\n             example: 'my-name' will create 'my-name.lighthouse.4.robonomics.eth' domain",
-            "id": 3090,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "createLighthouse",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3086,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3081,
-                  "name": "_minimalStake",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1610:21:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3080,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1610:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3083,
-                  "name": "_timeoutInBlocks",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1641:24:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3082,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1641:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3085,
-                  "name": "_name",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1675:21:15",
-                  "stateVariable": false,
-                  "storageLocation": "calldata",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_calldata_ptr",
-                    "typeString": "string"
-                  },
-                  "typeName": {
-                    "id": 3084,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1675:6:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Create lighthouse smart contract\n@param _minimalStake Minimal stake value of XRT token (one quota price)\n@param _timeoutInBlocks Max time of lighthouse silence in blocks\n@param _name Lighthouse name,\n             example: 'my-name' will create 'my-name.lighthouse.4.robonomics.eth' domain",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
               ],
-              "src": "1600:102:15"
+              "name": "createLighthouse",
+              "scope": 4731,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
             },
-            "returnParameters": {
-              "id": 3089,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3088,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3090,
-                  "src": "1721:11:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILighthouse_$3311",
-                    "typeString": "contract ILighthouse"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_minimalStake",
+                      "scope": 4703,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4693,
+                        "name": "ElementaryTypeName",
+                        "src": "1610:7:28"
+                      }
+                    ],
+                    "id": 4694,
+                    "name": "VariableDeclaration",
+                    "src": "1610:21:28"
                   },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 3087,
-                    "name": "ILighthouse",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3311,
-                    "src": "1721:11:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILighthouse_$3311",
-                      "typeString": "contract ILighthouse"
-                    }
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_timeoutInBlocks",
+                      "scope": 4703,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4695,
+                        "name": "ElementaryTypeName",
+                        "src": "1641:7:28"
+                      }
+                    ],
+                    "id": 4696,
+                    "name": "VariableDeclaration",
+                    "src": "1641:24:28"
                   },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1720:13:15"
-            },
-            "scope": 3118,
-            "src": "1575:159:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_name",
+                      "scope": 4703,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 4697,
+                        "name": "ElementaryTypeName",
+                        "src": "1675:6:28"
+                      }
+                    ],
+                    "id": 4698,
+                    "name": "VariableDeclaration",
+                    "src": "1675:21:28"
+                  }
+                ],
+                "id": 4699,
+                "name": "ParameterList",
+                "src": "1600:102:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4703,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ILighthouse",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "ILighthouse",
+                          "referencedDeclaration": 4924,
+                          "type": "contract ILighthouse"
+                        },
+                        "id": 4700,
+                        "name": "UserDefinedTypeName",
+                        "src": "1721:11:28"
+                      }
+                    ],
+                    "id": 4701,
+                    "name": "VariableDeclaration",
+                    "src": "1721:11:28"
+                  }
+                ],
+                "id": 4702,
+                "name": "ParameterList",
+                "src": "1720:13:28"
+              }
+            ],
+            "id": 4703,
+            "name": "FunctionDefinition",
+            "src": "1575:159:28"
           },
           {
-            "body": null,
-            "documentation": "@dev Create robot liability smart contract\n@param _demand ABI-encoded demand message\n@param _offer ABI-encoded offer message\n@notice This method is for lighthouse contract use only",
-            "id": 3099,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "createLiability",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3095,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3092,
-                  "name": "_demand",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3099,
-                  "src": "1999:22:15",
-                  "stateVariable": false,
-                  "storageLocation": "calldata",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
-                    "typeString": "bytes"
-                  },
-                  "typeName": {
-                    "id": 3091,
-                    "name": "bytes",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1999:5:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3094,
-                  "name": "_offer",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3099,
-                  "src": "2031:21:15",
-                  "stateVariable": false,
-                  "storageLocation": "calldata",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bytes_calldata_ptr",
-                    "typeString": "bytes"
-                  },
-                  "typeName": {
-                    "id": 3093,
-                    "name": "bytes",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2031:5:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bytes_storage_ptr",
-                      "typeString": "bytes"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Create robot liability smart contract\n@param _demand ABI-encoded demand message\n@param _offer ABI-encoded offer message\n@notice This method is for lighthouse contract use only",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
               ],
-              "src": "1989:69:15"
+              "name": "createLiability",
+              "scope": 4731,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
             },
-            "returnParameters": {
-              "id": 3098,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3097,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3099,
-                  "src": "2077:10:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILiability_$3218",
-                    "typeString": "contract ILiability"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_demand",
+                      "scope": 4712,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 4704,
+                        "name": "ElementaryTypeName",
+                        "src": "1999:5:28"
+                      }
+                    ],
+                    "id": 4705,
+                    "name": "VariableDeclaration",
+                    "src": "1999:22:28"
                   },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 3096,
-                    "name": "ILiability",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3218,
-                    "src": "2077:10:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILiability_$3218",
-                      "typeString": "contract ILiability"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2076:12:15"
-            },
-            "scope": 3118,
-            "src": "1965:124:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_offer",
+                      "scope": 4712,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 4706,
+                        "name": "ElementaryTypeName",
+                        "src": "2031:5:28"
+                      }
+                    ],
+                    "id": 4707,
+                    "name": "VariableDeclaration",
+                    "src": "2031:21:28"
+                  }
+                ],
+                "id": 4708,
+                "name": "ParameterList",
+                "src": "1989:69:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4712,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ILiability",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "ILiability",
+                          "referencedDeclaration": 4831,
+                          "type": "contract ILiability"
+                        },
+                        "id": 4709,
+                        "name": "UserDefinedTypeName",
+                        "src": "2077:10:28"
+                      }
+                    ],
+                    "id": 4710,
+                    "name": "VariableDeclaration",
+                    "src": "2077:10:28"
+                  }
+                ],
+                "id": 4711,
+                "name": "ParameterList",
+                "src": "2076:12:28"
+              }
+            ],
+            "id": 4712,
+            "name": "FunctionDefinition",
+            "src": "1965:124:28"
           },
           {
-            "body": null,
-            "documentation": "@dev Is called after liability creation\n@param _liability Liability contract address\n@param _start_gas Transaction start gas level\n@notice This method is for lighthouse contract use only",
-            "id": 3108,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "liabilityCreated",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3104,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3101,
-                  "name": "_liability",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3108,
-                  "src": "2352:21:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILiability_$3218",
-                    "typeString": "contract ILiability"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 3100,
-                    "name": "ILiability",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3218,
-                    "src": "2352:10:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILiability_$3218",
-                      "typeString": "contract ILiability"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3103,
-                  "name": "_start_gas",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3108,
-                  "src": "2375:18:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3102,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2375:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Is called after liability creation\n@param _liability Liability contract address\n@param _start_gas Transaction start gas level\n@notice This method is for lighthouse contract use only",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
               ],
-              "src": "2351:43:15"
+              "name": "liabilityCreated",
+              "scope": 4731,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
             },
-            "returnParameters": {
-              "id": 3107,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3106,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3108,
-                  "src": "2413:4:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_liability",
+                      "scope": 4721,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ILiability",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "ILiability",
+                          "referencedDeclaration": 4831,
+                          "type": "contract ILiability"
+                        },
+                        "id": 4713,
+                        "name": "UserDefinedTypeName",
+                        "src": "2352:10:28"
+                      }
+                    ],
+                    "id": 4714,
+                    "name": "VariableDeclaration",
+                    "src": "2352:21:28"
                   },
-                  "typeName": {
-                    "id": 3105,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2413:4:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2412:6:15"
-            },
-            "scope": 3118,
-            "src": "2326:93:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_start_gas",
+                      "scope": 4721,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4715,
+                        "name": "ElementaryTypeName",
+                        "src": "2375:7:28"
+                      }
+                    ],
+                    "id": 4716,
+                    "name": "VariableDeclaration",
+                    "src": "2375:18:28"
+                  }
+                ],
+                "id": 4717,
+                "name": "ParameterList",
+                "src": "2351:43:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4721,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4718,
+                        "name": "ElementaryTypeName",
+                        "src": "2413:4:28"
+                      }
+                    ],
+                    "id": 4719,
+                    "name": "VariableDeclaration",
+                    "src": "2413:4:28"
+                  }
+                ],
+                "id": 4720,
+                "name": "ParameterList",
+                "src": "2412:6:28"
+              }
+            ],
+            "id": 4721,
+            "name": "FunctionDefinition",
+            "src": "2326:93:28"
           },
           {
-            "body": null,
-            "documentation": "@dev Is called after liability finalization\n@param _liability Liability contract address\n@param _start_gas Transaction start gas level\n@notice This method is for lighthouse contract use only",
-            "id": 3117,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "liabilityFinalized",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3113,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3110,
-                  "name": "_liability",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3117,
-                  "src": "2688:21:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ILiability_$3218",
-                    "typeString": "contract ILiability"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 3109,
-                    "name": "ILiability",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3218,
-                    "src": "2688:10:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ILiability_$3218",
-                      "typeString": "contract ILiability"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 3112,
-                  "name": "_start_gas",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3117,
-                  "src": "2711:18:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 3111,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2711:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Is called after liability finalization\n@param _liability Liability contract address\n@param _start_gas Transaction start gas level\n@notice This method is for lighthouse contract use only",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
               ],
-              "src": "2687:43:15"
+              "name": "liabilityFinalized",
+              "scope": 4731,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
             },
-            "returnParameters": {
-              "id": 3116,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3115,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3117,
-                  "src": "2749:4:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_liability",
+                      "scope": 4730,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract ILiability",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "ILiability",
+                          "referencedDeclaration": 4831,
+                          "type": "contract ILiability"
+                        },
+                        "id": 4722,
+                        "name": "UserDefinedTypeName",
+                        "src": "2688:10:28"
+                      }
+                    ],
+                    "id": 4723,
+                    "name": "VariableDeclaration",
+                    "src": "2688:21:28"
                   },
-                  "typeName": {
-                    "id": 3114,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2749:4:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2748:6:15"
-            },
-            "scope": 3118,
-            "src": "2660:95:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_start_gas",
+                      "scope": 4730,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4724,
+                        "name": "ElementaryTypeName",
+                        "src": "2711:7:28"
+                      }
+                    ],
+                    "id": 4725,
+                    "name": "VariableDeclaration",
+                    "src": "2711:18:28"
+                  }
+                ],
+                "id": 4726,
+                "name": "ParameterList",
+                "src": "2687:43:28"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4730,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4727,
+                        "name": "ElementaryTypeName",
+                        "src": "2749:4:28"
+                      }
+                    ],
+                    "id": 4728,
+                    "name": "VariableDeclaration",
+                    "src": "2749:4:28"
+                  }
+                ],
+                "id": 4729,
+                "name": "ParameterList",
+                "src": "2748:6:28"
+              }
+            ],
+            "id": 4730,
+            "name": "FunctionDefinition",
+            "src": "2660:95:28"
           }
         ],
-        "scope": 3119,
-        "src": "138:2619:15"
+        "id": 4731,
+        "name": "ContractDefinition",
+        "src": "138:2619:28"
       }
     ],
-    "src": "0:2758:15"
+    "id": 4732,
+    "name": "SourceUnit",
+    "src": "0:2758:28"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.7+commit.6da8b019.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-04-17T08:53:51.194Z",
+  "schemaVersion": "3.4.8",
+  "updatedAt": "2022-07-05T11:40:14.284Z",
   "devdoc": {
     "methods": {
       "createLiability(bytes,bytes)": {

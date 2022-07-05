@@ -5,6 +5,7 @@
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "_validator",
           "type": "address"
         }
@@ -12,6 +13,7 @@
       "name": "isValidator",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -21,24 +23,25 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_validator\",\"type\":\"address\"}],\"name\":\"isValidator\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Observing network contract interface\",\"methods\":{\"isValidator(address)\":{\"details\":\"Be sure than address is really validator\",\"return\":\"true when validator address in argument\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/robonomics/interface/IValidator.sol\":\"IValidator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/robonomics/interface/IValidator.sol\":{\"keccak256\":\"0x26e2ed171ed998be71a4c7f0527af79f96f94b98739b2e4e9d5189381993d9c4\",\"urls\":[\"bzz-raw://d8e58eec630df2ef1c61d70ee5ff6b27c0c484f854e880858a0990aed370a378\",\"dweb:/ipfs/QmZLDiJxQJMprmiiyUz2gKPASUiWudfEJsaCkEfnqXrMNR\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\n\n/**\n * @dev Observing network contract interface\n */\ncontract IValidator {\n    /**\n     * @dev Be sure than address is really validator\n     * @return true when validator address in argument\n     */\n    function isValidator(address _validator) external returns (bool);\n}\n",
-  "sourcePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/IValidator.sol",
+  "sourcePath": "/home/tubleronchik/work/neon_robonomics_contracts/robonomics_contracts/contracts/robonomics/interface/IValidator.sol",
   "ast": {
-    "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/IValidator.sol",
+    "absolutePath": "project:/contracts/robonomics/interface/IValidator.sol",
     "exportedSymbols": {
       "IValidator": [
-        3321
+        4934
       ]
     },
-    "id": 3322,
+    "id": 4935,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3313,
+        "id": 4926,
         "literals": [
           "solidity",
           "^",
@@ -46,7 +49,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:18"
+        "src": "0:23:31"
       },
       {
         "baseContracts": [],
@@ -54,9 +57,9 @@
         "contractKind": "contract",
         "documentation": "@dev Observing network contract interface",
         "fullyImplemented": false,
-        "id": 3321,
+        "id": 4934,
         "linearizedBaseContracts": [
-          3321
+          4934
         ],
         "name": "IValidator",
         "nodeType": "ContractDefinition",
@@ -64,23 +67,23 @@
           {
             "body": null,
             "documentation": "@dev Be sure than address is really validator\n@return true when validator address in argument",
-            "id": 3320,
+            "id": 4933,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isValidator",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3316,
+              "id": 4929,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3315,
+                  "id": 4928,
                   "name": "_validator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3320,
-                  "src": "249:18:18",
+                  "scope": 4933,
+                  "src": "249:18:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -88,10 +91,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 3314,
+                    "id": 4927,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "249:7:18",
+                    "src": "249:7:31",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -102,19 +105,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "248:20:18"
+              "src": "248:20:31"
             },
             "returnParameters": {
-              "id": 3319,
+              "id": 4932,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3318,
+                  "id": 4931,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3320,
-                  "src": "287:4:18",
+                  "scope": 4933,
+                  "src": "287:4:31",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -122,10 +125,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 3317,
+                    "id": 4930,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "287:4:18",
+                    "src": "287:4:31",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -135,151 +138,168 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "286:6:18"
+              "src": "286:6:31"
             },
-            "scope": 3321,
-            "src": "228:65:18",
+            "scope": 4934,
+            "src": "228:65:31",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 3322,
-        "src": "78:217:18"
+        "scope": 4935,
+        "src": "78:217:31"
       }
     ],
-    "src": "0:296:18"
+    "src": "0:296:31"
   },
   "legacyAST": {
-    "absolutePath": "/home/akru/devel/robonomics_contracts/contracts/robonomics/interface/IValidator.sol",
-    "exportedSymbols": {
-      "IValidator": [
-        3321
-      ]
+    "attributes": {
+      "absolutePath": "project:/contracts/robonomics/interface/IValidator.sol",
+      "exportedSymbols": {
+        "IValidator": [
+          4934
+        ]
+      }
     },
-    "id": 3322,
-    "nodeType": "SourceUnit",
-    "nodes": [
+    "children": [
       {
-        "id": 3313,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".0"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:23:18"
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 4926,
+        "name": "PragmaDirective",
+        "src": "0:23:31"
       },
       {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "contract",
-        "documentation": "@dev Observing network contract interface",
-        "fullyImplemented": false,
-        "id": 3321,
-        "linearizedBaseContracts": [
-          3321
-        ],
-        "name": "IValidator",
-        "nodeType": "ContractDefinition",
-        "nodes": [
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@dev Observing network contract interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4934
+          ],
+          "name": "IValidator",
+          "scope": 4935
+        },
+        "children": [
           {
-            "body": null,
-            "documentation": "@dev Be sure than address is really validator\n@return true when validator address in argument",
-            "id": 3320,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "isValidator",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3316,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3315,
-                  "name": "_validator",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3320,
-                  "src": "249:18:18",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 3314,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "249:7:18",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Be sure than address is really validator\n@return true when validator address in argument",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
               ],
-              "src": "248:20:18"
+              "name": "isValidator",
+              "scope": 4934,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
             },
-            "returnParameters": {
-              "id": 3319,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3318,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3320,
-                  "src": "287:4:18",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 3317,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "287:4:18",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "286:6:18"
-            },
-            "scope": 3321,
-            "src": "228:65:18",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_validator",
+                      "scope": 4933,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4927,
+                        "name": "ElementaryTypeName",
+                        "src": "249:7:31"
+                      }
+                    ],
+                    "id": 4928,
+                    "name": "VariableDeclaration",
+                    "src": "249:18:31"
+                  }
+                ],
+                "id": 4929,
+                "name": "ParameterList",
+                "src": "248:20:31"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4933,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4930,
+                        "name": "ElementaryTypeName",
+                        "src": "287:4:31"
+                      }
+                    ],
+                    "id": 4931,
+                    "name": "VariableDeclaration",
+                    "src": "287:4:31"
+                  }
+                ],
+                "id": 4932,
+                "name": "ParameterList",
+                "src": "286:6:31"
+              }
+            ],
+            "id": 4933,
+            "name": "FunctionDefinition",
+            "src": "228:65:31"
           }
         ],
-        "scope": 3322,
-        "src": "78:217:18"
+        "id": 4934,
+        "name": "ContractDefinition",
+        "src": "78:217:31"
       }
     ],
-    "src": "0:296:18"
+    "id": 4935,
+    "name": "SourceUnit",
+    "src": "0:296:31"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.7+commit.6da8b019.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-04-17T08:53:51.196Z",
+  "schemaVersion": "3.4.8",
+  "updatedAt": "2022-07-05T11:40:14.290Z",
   "devdoc": {
     "details": "Observing network contract interface",
     "methods": {
