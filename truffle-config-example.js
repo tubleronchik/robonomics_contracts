@@ -17,9 +17,7 @@ module.exports = {
                 );
             },
             from: "", // Specify public key corresponding to private key defined above
-            network_id: "*",
-            gas: 3000000000,
-            gasPrice: 443065000000,
+            network_id: "*"
         }
     }
 };
